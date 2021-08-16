@@ -1,0 +1,47 @@
+{
+  "type": "record",
+  "name": "TeamEventData",
+  "namespace": "nl.kristalsoftware.association.team",
+  "fields": [
+    {
+      "name": "domainEventName",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "reference",
+      "type": "string",
+      "logicalType": "uuid"
+    },
+    {
+      "name": "category",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Category of age"
+    },
+    {
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Name of the team"
+    },
+    {
+      "name": "description",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null,
+      "doc": "Description of the team"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "record",
+  "name": "PlayerEventData",
+  "namespace": "nl.kristalsoftware.association.team",
+  "fields": [
+    {
+      "name": "domainEventName",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "reference",
+      "type": "string",
+      "logicalType": "uuid"
+    },
+    {
+      "name": "firstName",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "lastName",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "birthDate",
+      "type": [
+        "null",
+        "long"
+      ],
+      "logicalType": "timestamp-millis",
+      "default": null
+    },
+    {
+      "name": "role",
+      "type": "string",
+      "default": "Onbekend"
+    },
+    {
+      "name": "teamReference",
+      "type": [
+        "null",
+        "string"
+      ],
+      "logicalType": "uuid",
+      "default": null
+    }
+  ]
+}
