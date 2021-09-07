@@ -1,6 +1,26 @@
 ## Prerequisites
 Kafka must be running and the topics must exist.
 
+## Owner of topics
+- public.association.teamservice.team
+- public.association.teamservice.player
+
+## Used topics of other services
+- public.association.memberservice.member
+
+## Build java service
+```
+mvn clean
+
+# Build the avro data types in the domain module
+cd domain
+mvn avro:schema
+cd ..
+
+mvn install
+```
+
+
 ## Scripts
 ### create_fake_members json file
 ```shell

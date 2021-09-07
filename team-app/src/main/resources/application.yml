@@ -62,11 +62,11 @@ logging:
 team:
   kafka:
     member:
-      topicname: member
+      topicname: public.association.memberservice.member
     player:
-      topicname: player
+      topicname: public.association.teamservice.player
     team:
-      topicname: team
+      topicname: public.association.teamservice.team
   datastore:
     viewstore:
       url: http://localhost:5984/teams/
