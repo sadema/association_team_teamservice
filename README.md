@@ -9,7 +9,7 @@ Kafka must be running and the topics must exist.
 - public.association.memberservice.member
 
 ## Build java service
-```
+```shell
 mvn clean
 
 # Build the avro data types in the domain module
@@ -18,14 +18,6 @@ mvn avro:schema
 cd ..
 
 mvn install
-```
-
-
-## Scripts
-### create_fake_members json file
-```shell
-cd scripts/faker
-python3 create_fake_members.py
 ```
 
 ## CouchDB
@@ -57,4 +49,12 @@ docker run -d --rm --name team_couchdb -p 5984:5984 -v /opt/couchdb/data --volum
   },
   "language": "javascript"
 }
+```
+
+```shell
+# load the preset data with a shell script from the team-app/scripts directory
+# It creates the databases in couchdb and creates the teams and the design documents for the teams frontend
+# It produces the MemberSignedUp events on topic public.association.memberservice.member
+./loadPresets.sh
+
 ```
