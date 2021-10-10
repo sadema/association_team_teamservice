@@ -11,9 +11,9 @@ management:
 spring:
   kafka:
     properties:
-      allow.auto.create.topics: true
+      allow.auto.create.topics: false
       auto.offset.reset: earliest
-      schema.registry.url: http://127.0.0.1:8081
+      schema.registry.url: http://127.0.0.1:8181
     consumer:
       group-id: team-app
       enable-auto-commit: false
@@ -31,9 +31,10 @@ spring:
               delegate:
                 class: io.confluent.kafka.serializers.KafkaAvroDeserializer
     producer:
+#      value-serializer: nl.kristalsoftware.datastore.base.messaging.serializers.KafkaAvroSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       properties:
-        schema.registry.url: http://127.0.0.1:8081
+        schema.registry.url: http://127.0.0.1:8181
       client-id: team-app
 
   h2:

@@ -8,14 +8,16 @@ import nl.kristalsoftware.association.team.domain.player.command.SignUpPlayer;
 import nl.kristalsoftware.association.team.domain.player.command.UpdatePlayerProperties;
 import nl.kristalsoftware.association.team.domain.player.event.player_added_to_team.PlayerAddedToTeam;
 import nl.kristalsoftware.association.team.domain.player.event.player_added_to_team.PlayerAddedToTeamEventData;
+import nl.kristalsoftware.association.team.domain.player.event.player_detached_from_team.PlayerDetachedFromTeam;
+import nl.kristalsoftware.association.team.domain.player.event.player_detached_from_team.PlayerDetachedFromTeamEventData;
 import nl.kristalsoftware.association.team.domain.player.event.player_moved_to_another_team.PlayerMovedToAnotherTeam;
 import nl.kristalsoftware.association.team.domain.player.event.player_moved_to_another_team.PlayerMovedToAnotherTeamEventData;
+import nl.kristalsoftware.association.team.domain.player.event.player_properties_updated.PlayerPropertiesUpdated;
+import nl.kristalsoftware.association.team.domain.player.event.player_properties_updated.PlayerPropertiesUpdatedEventData;
 import nl.kristalsoftware.association.team.domain.player.event.player_role_assigned.PlayerRoleAssigned;
 import nl.kristalsoftware.association.team.domain.player.event.player_role_assigned.PlayerRoleAssignedEventData;
 import nl.kristalsoftware.association.team.domain.player.event.player_signed_up.PlayerSignedUp;
 import nl.kristalsoftware.association.team.domain.player.event.player_signed_up.PlayerSignedUpEventData;
-import nl.kristalsoftware.association.team.domain.player.event.player_properties_updated.PlayerPropertiesUpdated;
-import nl.kristalsoftware.association.team.domain.player.event.player_properties_updated.PlayerPropertiesUpdatedEventData;
 import nl.kristalsoftware.association.team.domain.team.TeamReference;
 import nl.kristalsoftware.domain.base.Aggregate;
 import nl.kristalsoftware.domain.base.BaseAggregateRoot;
@@ -23,7 +25,6 @@ import nl.kristalsoftware.domain.base.BaseEvent;
 import nl.kristalsoftware.domain.base.annotations.AggregateRoot;
 import org.springframework.context.ApplicationEventPublisher;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -61,6 +62,10 @@ public class Player extends BaseAggregateRoot<PlayerReference, BaseEvent<PlayerE
         teamReference = playerMovedToAnotherTeamEventData.getTeamReference();
     }
 
+    public void loadData(PlayerDetachedFromTeamEventData playerDetachedFromTeamEventData) {
+        teamReference = TeamReference.of((UUID) null);
+    }
+
     public void loadData(PlayerRoleAssignedEventData playerRoleAssignedEventData) {
         playerRole = playerRoleAssignedEventData.getPlayerRole();
     }
@@ -85,12 +90,16 @@ public class Player extends BaseAggregateRoot<PlayerReference, BaseEvent<PlayerE
                 .setReference(getReference().getStringValue())
                 .setTeamReference(command.getTeamReference().getStringValue())
                 .build();
-        if (isPlayerNotMemberOfAnyTeam() && hasNewTeam(command.getTeamReference())) {
-            sendEvent(new PlayerAddedToTeam(playerEventData));
+        if (isPlayerAlreadyMemberOfTeam() && !hasNewTeam(command.getTeamReference())) {
+            sendEvent(new PlayerDetachedFromTeam(playerEventData));
         }
         else {
-            if (isPlayerAlreadyMemberOfTeam() && hasNewTeam(command.getTeamReference())) {
-                sendEvent(new PlayerMovedToAnotherTeam(playerEventData));
+            if (isPlayerNotMemberOfAnyTeam() && hasNewTeam(command.getTeamReference())) {
+                sendEvent(new PlayerAddedToTeam(playerEventData));
+            } else {
+                if (isPlayerAlreadyMemberOfTeam() && hasNewTeam(command.getTeamReference())) {
+                    sendEvent(new PlayerMovedToAnotherTeam(playerEventData));
+                }
             }
         }
     }

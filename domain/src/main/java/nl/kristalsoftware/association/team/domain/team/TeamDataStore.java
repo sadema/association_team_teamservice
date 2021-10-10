@@ -9,4 +9,5 @@ public interface TeamDataStore {
 
     void saveTeamRegisteredEvent(TeamEventData eventData);
 
+    void saveTeamEditedEvent(TeamEventData eventData);
 }

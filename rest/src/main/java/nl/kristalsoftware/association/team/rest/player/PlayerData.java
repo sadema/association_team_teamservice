@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class PlayerData {
 
-    private String teamReference;
+    private String teamReference = "";
 
-    private String playerRole;
+    private String playerRole = "";
 
 }

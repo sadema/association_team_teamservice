@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class TeamData {
 
-    private String name;
+    private String name = "";
 
-    private String category;
+    private String category = "";
 
-    private String description;
+    private String description = "";
 
 }

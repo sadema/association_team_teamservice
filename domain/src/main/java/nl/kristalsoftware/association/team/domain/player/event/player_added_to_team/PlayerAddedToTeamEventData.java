@@ -2,7 +2,6 @@ package nl.kristalsoftware.association.team.domain.player.event.player_added_to_
 
 import lombok.Builder;
 import lombok.Getter;
-import nl.kristalsoftware.association.team.domain.player.PlayerRole;
 import nl.kristalsoftware.association.team.domain.team.TeamReference;
 
 @Builder
@@ -10,7 +9,5 @@ import nl.kristalsoftware.association.team.domain.team.TeamReference;
 public class PlayerAddedToTeamEventData {
 
     private TeamReference teamReference;
-
-    private PlayerRole playerRole;
 
 }
