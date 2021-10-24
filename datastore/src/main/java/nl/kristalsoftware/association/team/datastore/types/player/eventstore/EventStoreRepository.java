@@ -1,6 +1,6 @@
 package nl.kristalsoftware.association.team.datastore.types.player.eventstore;
 
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

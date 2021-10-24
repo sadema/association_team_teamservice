@@ -3,7 +3,7 @@ package nl.kristalsoftware.association.team.datastore.types.team.eventstore.even
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import nl.kristalsoftware.association.team.TeamEventData;
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
 
 import javax.persistence.Entity;
 import java.util.UUID;

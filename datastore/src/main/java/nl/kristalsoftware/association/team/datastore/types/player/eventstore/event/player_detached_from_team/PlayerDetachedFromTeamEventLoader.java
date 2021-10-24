@@ -3,8 +3,8 @@ package nl.kristalsoftware.association.team.datastore.types.player.eventstore.ev
 import lombok.extern.slf4j.Slf4j;
 import nl.kristalsoftware.association.team.domain.player.Player;
 import nl.kristalsoftware.association.team.domain.player.event.player_detached_from_team.PlayerDetachedFromTeamEventData;
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
-import nl.kristalsoftware.datastore.base.event.EventLoader;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.EventLoader;
 import org.springframework.stereotype.Component;
 
 @Slf4j

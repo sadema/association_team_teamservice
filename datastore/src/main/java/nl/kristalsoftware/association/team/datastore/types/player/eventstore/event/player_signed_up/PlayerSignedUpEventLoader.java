@@ -5,8 +5,8 @@ import nl.kristalsoftware.association.team.domain.player.Player;
 import nl.kristalsoftware.association.team.domain.player.PlayerBirthDate;
 import nl.kristalsoftware.association.team.domain.player.PlayerName;
 import nl.kristalsoftware.association.team.domain.player.event.player_signed_up.PlayerSignedUpEventData;
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
-import nl.kristalsoftware.datastore.base.event.EventLoader;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.EventLoader;
 import org.springframework.stereotype.Component;
 
 @Slf4j

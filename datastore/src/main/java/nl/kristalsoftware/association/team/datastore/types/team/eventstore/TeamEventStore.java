@@ -3,9 +3,9 @@ package nl.kristalsoftware.association.team.datastore.types.team.eventstore;
 import nl.kristalsoftware.association.team.datastore.types.player.eventstore.EventStoreRepository;
 import nl.kristalsoftware.association.team.domain.team.Team;
 import nl.kristalsoftware.association.team.domain.team.TeamReference;
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
-import nl.kristalsoftware.datastore.base.event.BaseEventStore;
-import nl.kristalsoftware.datastore.base.event.EventLoader;
+import nl.kristalsoftware.datastore.base.eventstore.BaseEventStore;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.EventLoader;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 

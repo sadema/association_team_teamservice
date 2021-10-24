@@ -6,8 +6,8 @@ import nl.kristalsoftware.association.team.domain.team.TeamCategory;
 import nl.kristalsoftware.association.team.domain.team.TeamDescription;
 import nl.kristalsoftware.association.team.domain.team.TeamName;
 import nl.kristalsoftware.association.team.domain.team.event.team_registered.TeamRegisteredEventData;
-import nl.kristalsoftware.datastore.base.event.BaseEventEntity;
-import nl.kristalsoftware.datastore.base.event.EventLoader;
+import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
+import nl.kristalsoftware.datastore.base.eventstore.event.EventLoader;
 import org.springframework.stereotype.Component;
 
 @Slf4j
