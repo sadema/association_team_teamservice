@@ -1,8 +1,7 @@
 package nl.kristalsoftware.association.team.domain.member.event.member_signed_up;
 
 import lombok.Getter;
-import nl.kristalsoftware.association.registration.MemberEventData;
-import nl.kristalsoftware.association.team.PlayerEventData;
+import nl.kristalsoftware.association.member.MemberEventData;
 import nl.kristalsoftware.domain.base.BaseEvent;
 import nl.kristalsoftware.domain.base.annotations.DomainEvent;
 

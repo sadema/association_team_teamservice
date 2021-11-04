@@ -3,6 +3,7 @@ package nl.kristalsoftware.association.team.datastore.types.player.eventstore;
 import nl.kristalsoftware.association.team.domain.player.Player;
 import nl.kristalsoftware.association.team.domain.player.PlayerReference;
 import nl.kristalsoftware.datastore.base.eventstore.BaseEventStore;
+import nl.kristalsoftware.datastore.base.eventstore.EventStoreRepository;
 import nl.kristalsoftware.datastore.base.eventstore.event.BaseEventEntity;
 import nl.kristalsoftware.datastore.base.eventstore.event.EventLoader;
 import org.springframework.context.ApplicationEventPublisher;

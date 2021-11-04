@@ -22,4 +22,8 @@ public class BaseViewStore<T> {
         restTemplate.put(url, httpEntity);
     }
 
+    protected void deleteDocument(String url) {
+        restTemplate.delete(url);
+    }
+
 }

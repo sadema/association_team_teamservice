@@ -23,4 +23,4 @@ curl http://localhost:9876/teams -H "Content-Type: application/json" -d '{ "name
 curl http://localhost:9876/teams -H "Content-Type: application/json" -d '{ "name":"JO17-1", "category":"JO17", "description":"Selectie team" }'
 
 # member presets by kafka messages
-cat ../preset_data/fakeMembers.json | ./produceMembers.sh
+cat ../preset_data/fakeMembersForTopic.json | ./produceMembers.sh

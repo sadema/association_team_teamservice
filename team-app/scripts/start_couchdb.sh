@@ -6,7 +6,8 @@ if [ ! -z "${CONTAINER_ID}" ];
 then
   docker stop team_couchdb
 fi
-docker run -d --rm --name team_couchdb -p 5984:5984 team_couchdb:1.0.0
+#docker run -d --rm --name team_couchdb -p 5984:5984 team_couchdb:1.0.0
+docker run -d --rm --name team_couchdb -p 5984:5984 couchdb:2.3.1
 sleep 5
 curl http://localhost:5984
 

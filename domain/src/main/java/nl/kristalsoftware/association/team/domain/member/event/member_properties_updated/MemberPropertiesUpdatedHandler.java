@@ -2,7 +2,7 @@ package nl.kristalsoftware.association.team.domain.member.event.member_propertie
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nl.kristalsoftware.association.registration.MemberEventData;
+import nl.kristalsoftware.association.member.MemberEventData;
 import nl.kristalsoftware.association.team.domain.player.PlayerService;
 import nl.kristalsoftware.domain.base.DomainEventHandler;
 import org.springframework.stereotype.Component;

@@ -8,6 +8,7 @@ import nl.kristalsoftware.association.team.datastore.types.player.eventstore.eve
 import nl.kristalsoftware.association.team.datastore.types.player.eventstore.event.player_moved_to_another_team.PlayerMovedToAnotherTeamEventEntity;
 import nl.kristalsoftware.association.team.datastore.types.player.eventstore.event.player_role_assigned.PlayerRoleAssignedEventEntity;
 import nl.kristalsoftware.association.team.datastore.types.player.eventstore.event.player_signed_up.PlayerSignedUpEventEntity;
+import nl.kristalsoftware.association.team.datastore.types.player.eventstore.event.player_stopped.PlayerStoppedEventEntity;
 import nl.kristalsoftware.association.team.datastore.types.player.viewstore.PlayerViewStore;
 import nl.kristalsoftware.association.team.domain.player.Player;
 import nl.kristalsoftware.association.team.domain.player.PlayerDataStore;
@@ -66,6 +67,13 @@ public class PlayerDataStoreAdapter implements PlayerDataStore {
         PlayerDetachedFromTeamEventEntity playerDetachedFromTeamEventEntity = PlayerDetachedFromTeamEventEntity.of(eventData);
         playerEventStore.saveEventEntity(playerDetachedFromTeamEventEntity);
         playerViewStore.playerDetachedFromTeam(eventData);
+    }
+
+    @Override
+    public void savePlayerStoppedEvent(PlayerEventData eventData) {
+        PlayerStoppedEventEntity playerStoppedEventEntity = PlayerStoppedEventEntity.of(eventData);
+        playerEventStore.saveEventEntity(playerStoppedEventEntity);
+        playerViewStore.playerStopped(eventData);
     }
 
     @Transactional

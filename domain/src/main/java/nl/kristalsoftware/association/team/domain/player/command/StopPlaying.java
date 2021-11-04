@@ -5,14 +5,5 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor(staticName = "of")
-public class SignUpPlayer {
-
-    private String firstName;
-
-    private String lastName;
-
-    private Long birthDate;
-
-    private String kind;
-
+public class StopPlaying {
 }

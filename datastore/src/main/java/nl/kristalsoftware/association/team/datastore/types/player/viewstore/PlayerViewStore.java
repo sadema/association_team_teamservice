@@ -52,4 +52,9 @@ public class PlayerViewStore extends BaseViewStore<PlayerDocument> {
         createOrUpdateDocument(url, playerDocument);
     }
 
+    public void playerStopped(PlayerEventData eventData) {
+        String url = teamDatabaseUrl + eventData.getReference();
+        PlayerDocument playerDocument = getDocument(url, PlayerDocument.class);
+        deleteDocument(url  + "?rev=" + playerDocument.get_rev());
+    }
 }

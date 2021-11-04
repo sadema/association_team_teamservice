@@ -1,4 +1,4 @@
-package nl.kristalsoftware.association.team.domain.member.event.member_signed_up;
+package nl.kristalsoftware.association.team.domain.member.event.member_quited;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,18 +10,20 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class MemberSignedUpHandler implements DomainEventHandler<MemberEventData> {
+public class MemberQuitedHandler implements DomainEventHandler<MemberEventData> {
 
     private final PlayerService playerService;
 
     @Override
     public String appliesTo() {
-        return MemberSignedUp.class.getSimpleName();
+        return MemberQuited.class.getSimpleName();
     }
 
     @Override
     public void saveEvent(MemberEventData eventData) {
-        playerService.signUpPlayer(eventData.getReference(), eventData.getFirstName(), eventData.getLastName(), eventData.getBirthDate(), eventData.getKind());
+        if (eventData.getKind().equals("PLAYER")) {
+            playerService.stopPlaying(eventData.getReference(), eventData.getKind());
+        }
     }
 
 }

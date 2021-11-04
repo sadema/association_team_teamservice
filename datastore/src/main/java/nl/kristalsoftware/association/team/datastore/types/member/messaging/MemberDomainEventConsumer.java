@@ -1,7 +1,7 @@
 package nl.kristalsoftware.association.team.datastore.types.member.messaging;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.kristalsoftware.association.registration.MemberEventData;
+import nl.kristalsoftware.association.member.MemberEventData;
 import nl.kristalsoftware.datastore.base.messaging.EventConsumer;
 import nl.kristalsoftware.datastore.base.messaging.offsetmanagement.TopicPartitionHandler;
 import nl.kristalsoftware.domain.base.DomainEventHandler;

@@ -22,4 +22,7 @@ public interface PlayerDataStore {
     void savePlayerPropertiesUpdatedEvent(PlayerEventData eventData);
 
     void savePlayerDetachedFromTeamEvent(PlayerEventData eventData);
+
+    void savePlayerStoppedEvent(PlayerEventData eventData);
+
 }

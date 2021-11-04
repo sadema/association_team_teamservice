@@ -5,6 +5,7 @@ import nl.kristalsoftware.association.team.PlayerEventData;
 import nl.kristalsoftware.association.team.domain.player.command.AssignPlayerRole;
 import nl.kristalsoftware.association.team.domain.player.command.MakePlayerMemberOfTeam;
 import nl.kristalsoftware.association.team.domain.player.command.SignUpPlayer;
+import nl.kristalsoftware.association.team.domain.player.command.StopPlaying;
 import nl.kristalsoftware.association.team.domain.player.command.UpdatePlayerProperties;
 import nl.kristalsoftware.association.team.domain.player.event.player_added_to_team.PlayerAddedToTeam;
 import nl.kristalsoftware.association.team.domain.player.event.player_added_to_team.PlayerAddedToTeamEventData;
@@ -18,6 +19,8 @@ import nl.kristalsoftware.association.team.domain.player.event.player_role_assig
 import nl.kristalsoftware.association.team.domain.player.event.player_role_assigned.PlayerRoleAssignedEventData;
 import nl.kristalsoftware.association.team.domain.player.event.player_signed_up.PlayerSignedUp;
 import nl.kristalsoftware.association.team.domain.player.event.player_signed_up.PlayerSignedUpEventData;
+import nl.kristalsoftware.association.team.domain.player.event.player_stopped.PlayerStopped;
+import nl.kristalsoftware.association.team.domain.player.event.player_stopped.PlayerStoppedEventData;
 import nl.kristalsoftware.association.team.domain.team.TeamReference;
 import nl.kristalsoftware.domain.base.Aggregate;
 import nl.kristalsoftware.domain.base.BaseAggregateRoot;
@@ -75,14 +78,20 @@ public class Player extends BaseAggregateRoot<PlayerReference, BaseEvent<PlayerE
         playerBirthDate = playerSignedUpEventData.getPlayerBirthDate();
     }
 
+    public void loadData(PlayerStoppedEventData playerStoppedEventData) {
+        // TODO: set deleted ???
+    }
+
     public void handleCommand(SignUpPlayer command) {
-        PlayerEventData playerEventData = PlayerEventData.newBuilder()
-                .setReference(getReference().getStringValue())
-                .setFirstName(command.getFirstName())
-                .setLastName(command.getLastName())
-                .setBirthDate(command.getBirthDate())
-                .build();
-        sendEvent(new PlayerSignedUp(playerEventData));
+        if (command.getKind().equals("PLAYER")) {
+            PlayerEventData playerEventData = PlayerEventData.newBuilder()
+                    .setReference(getReference().getStringValue())
+                    .setFirstName(command.getFirstName())
+                    .setLastName(command.getLastName())
+                    .setBirthDate(command.getBirthDate())
+                    .build();
+            sendEvent(new PlayerSignedUp(playerEventData));
+        }
     }
 
     public void handleCommand(MakePlayerMemberOfTeam command) {
@@ -122,6 +131,13 @@ public class Player extends BaseAggregateRoot<PlayerReference, BaseEvent<PlayerE
         if (command.getLastName() != null) playerEventData.setLastName(command.getLastName());
         if (command.getBirthDate() != null) playerEventData.setBirthDate(command.getBirthDate());
         sendEvent(new PlayerPropertiesUpdated(playerEventData));
+    }
+
+    public void handleCommand(StopPlaying command) {
+        PlayerEventData playerEventData = PlayerEventData.newBuilder()
+                .setReference(getReference().getStringValue())
+                .build();
+        sendEvent(new PlayerStopped(playerEventData));
     }
 
     private boolean isPlayerAlreadyMemberOfTeam() {

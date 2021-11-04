@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "MemberEventData",
-  "namespace": "nl.kristalsoftware.association.registration",
+  "namespace": "nl.kristalsoftware.association.member",
   "fields": [
     {
       "name": "domainEventName",
@@ -42,23 +42,7 @@
       "default": null
     },
     {
-      "name": "address",
-      "type": [
-        "null",
-        "string"
-      ],
-      "default": null
-    },
-    {
-      "name": "city",
-      "type": [
-        "null",
-        "string"
-      ],
-      "default": null
-    },
-    {
-      "name": "zip",
+      "name": "kind",
       "type": [
         "null",
         "string"

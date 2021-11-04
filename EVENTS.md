@@ -6,16 +6,19 @@
 |-------|-------------|
 | MemberSignedUp | 
 | MemberPropertiesUpdated |
+| MemberQuited |
+| MemberKindChanged |
 
 ### Producerende events
 | Command | Event | PlayerEventData | API |
 |---------|-------|--------|-----|
-| | PlayerSignedUp |
-| | PlayerPropertiesUpdated | firstName, lastName |
-| | PlayerRoleAssigned |  |
-| MakePlayerMemberOfTeam |PlayerAddedToTeam | teamReference
+| SignUpPlayer | PlayerSignedUp |
+| UpdatePlayerProperties | PlayerPropertiesUpdated | firstName, lastName |
+| AssignPlayerRole | PlayerRoleAssigned |  |
+| MakePlayerMemberOfTeam | PlayerAddedToTeam | teamReference
 | MakePlayerMemberOfTeam | PlayerMovedToAnotherTeam | teamReference
 | MakePlayerMemberOfTeam | PlayerDetachedFromTeam | teamReference
+| StopPlaying | PlayerStopped |
 
 | Command | Event | TeamEventData |
 | ------- | ----- | ------------- |
